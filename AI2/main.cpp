@@ -115,17 +115,17 @@ int MCT(int sum, int player) {
                 temp->next=cur;
                 cur->father=temp;
                 temp=cur;
-            }
-    head=head->next;
+            }//建立空棋位链表
+    head=head->next;//吃掉第一个空的头
     while (head!=NULL) {
         srand(time(NULL));
-        random_chess = rand() % sum;
+        random_chess = rand() % sum;//生成一个随机数来随机下一个棋子，这个sum是递减的，随机数生成范围会根据可下棋的空位数减少而减少
 
         if (head->next==NULL) {
             cur=head;
             head=NULL;
             goto b;
-        }
+        }//如果只剩最后一个位子可以下，直接跳转判断
         if (head->th==random_chess) {
             head->next->father=NULL;
             cur=head;
@@ -137,7 +137,7 @@ int MCT(int sum, int player) {
             }
             cur=head;
             goto b;
-        }
+        }//如果刚好随机数生成为0则取头节点，但头节点没有father节点，属于特殊情况拿了出来
         cur=head;
         while (cur!=NULL) {
             if (cur->th==random_chess) {
@@ -153,24 +153,24 @@ int MCT(int sum, int player) {
             }
             else
                 cur=cur->next;
-        }
-        if (cur==NULL)
-            return check();
+        }//从链表里面找到随机数对应的序号的那个棋位下上棋子
+
+
 
         b:if (player&1) {
         map[cur->x][cur->y]='x';
         free(cur);
-    }
+    }//player是1的时候归人下，人执x
     else {
         map[cur->x][cur->y]='o';
         free(cur);
-    }
+    }//player是0归电脑下
         if (check()!=-1)
-            return check();
-        player=1-player;
-        sum--;
+            return check();//胜负出现了就直接返回了
+        player=1-player;//换手
+        sum--;//缩小随机数范围
     }
-    return check();
+    return check();//head==null了，没棋可下了。
 }
 
 
