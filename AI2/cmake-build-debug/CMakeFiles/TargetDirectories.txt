@@ -1,0 +1,3 @@
+/home/sk-31/CLionProjects/AI2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sk-31/CLionProjects/AI2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sk-31/CLionProjects/AI2/cmake-build-debug/CMakeFiles/AI2.dir

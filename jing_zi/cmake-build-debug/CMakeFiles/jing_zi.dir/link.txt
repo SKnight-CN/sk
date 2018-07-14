@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/jing_zi.dir/main.cpp.o  -o jing_zi 
