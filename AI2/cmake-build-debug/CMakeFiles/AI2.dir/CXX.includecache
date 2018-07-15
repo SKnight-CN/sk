@@ -9,12 +9,6 @@
 /home/sk-31/CLionProjects/AI2/main.cpp
 iostream
 -
-list
--
-string.h
--
-time.h
--
-math.h
+cmath
 -
 
