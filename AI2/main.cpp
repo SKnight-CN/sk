@@ -3,7 +3,8 @@
 
 using namespace std;
 int X, Y;
-#define MIN_SIZE 100000
+#define MIN_SIZE 100
+#define MAX_SIZE 200
 
 char qi_pan[4][4], map[4][4];
 
@@ -172,7 +173,6 @@ int MCT(int sum, int player) {
 }
 
 void cal1(step *set1, int sum) {
-
     while (set1->visit < MIN_SIZE) {
         if (MCT(sum, 1) == 0) {
             set1->visit++;
@@ -231,17 +231,16 @@ int main() {
         }
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-
                 if (map[i][j] == ' ') {
                     set[s].x = i;
                     set[s].y = j;
-                    map[i][j]='x';
+                    map[i][j] = 'x';
                     if (check()==1) {
                         cur_set=&set[s];
                         goto c;
                     }
-                    map[i][j] = 'o';
 
+                    map[i][j] = 'o';
                     if (check()==0) {
                         cur_set=&set[s];
                         goto c;
@@ -253,6 +252,7 @@ int main() {
                 }
             }
         }
+
 
         while (true) {
             a:
@@ -273,15 +273,14 @@ int main() {
         c:qi_pan[cur_set->x][cur_set->y] = 'o';
         map[cur_set->x][cur_set->y] = 'o';
         printf("SK chose (%d,%d)\n", cur_set->x, cur_set->y);
-        for (int x=0; x<4; x++) {
-            for (int y=0; y<4; y++) {
-                printf ("%c", qi_pan[x][y]);
+        for (int i=0;i<4 ;i++) {
+            for (int j=0; j<4; j++) {
+                printf ("%c", qi_pan[i][j]);
             }
-            printf ("\n");
+            printf("\n");
         }
         s = 0;
         sum -= 2;
-
     }
 
     return 0;
